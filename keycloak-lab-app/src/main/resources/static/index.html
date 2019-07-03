@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title> cross origin test</title>
+</head>
+<body>
+<script>
+            var getHttp = function() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        document.getElementById("resText").innerHTML = this.responseText;
+                    }
+                    else {
+                        console.log("error ocurred while geting res");
+                    }
+                }
+                xhttp.open("GET", "http://localhost:8089/api/test", true);
+                xhttp.send();
+            }
+
+            var getSecuredHttp = function() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        document.getElementById("secResText").innerHTML = this.responseText;
+                    }
+                    else if(this.readyState == 4) {
+                        console.log("error ocurred while geting res");
+                        document.getElementById("secResText").innerHTML =
+                    }
+                    else {
+
+                    }
+                }
+                xhttp.open("GET", "http://localhost:8089/api/secured/accounts", true);
+                xhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwaHBkV3kxNGsyX0ZuNG9MWmJ5bUZMNnBXT3I5cUNYc2J4NWhnUWZrT2Z3In0.eyJqdGkiOiI2NmZiZTI1OC0zN2VkLTQ4MjQtODcxNS00OGRkYTJiMjEyOWIiLCJleHAiOjE1NTk3NzMyMjksIm5iZiI6MCwiaWF0IjoxNTU5NzcyOTI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvYXV0aC9yZWFsbXMva2V5Y2xvYWstbGFiLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImVkMmFjYjQ0LTUxNDItNGY0Yy04NTEzLTcxZDE3MWJiODg5ZCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImtleWNsb2FrLWxhYi1hcHAiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJlMzZkYWJjZi03OTllLTRjYjYtOWJjYy1lNTNlZGFkZDVlMzciLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJrZXljbG9hay1sYWItdXNlcjEifQ.VLDa7VAxvCHeVt6wvNDjbm8ox8su3V15eXOrkCgupy2ttzKbSZ8hwQ35QATjR8ZQ2hmU4b_gihV_nQP4nQONg9CbOODQPr5jBPMkkCHzHPXXWAs8oDav1OOvWtMrSZaFAZZToPPN83FnM2UU4U1Qdw9tvjN6h-PJKcL7_JqMa6PeqM6IRBbz3g5ffhsv8F_nPAUEyOKZ73ztYqk5O0JPNeILTnfwDjYYrNT4smUP-adasFxo95SATFixCtDC3hozIqaOuB3FE-OrZB1wc4d1AaeR-zsrEXgEvK9--gkNo8zCJ5kIBJAgmaVbjeEHLW244oNpc1wdFt9aLYe_lDZ5kA');
+                xhttp.send();
+            }
+
+
+            var login = function(user, success, error) {
+                var xhttp = new XMLHttpRequest();
+
+            }
+        </script>
+<h1> cross origin test </h1>
+<p id = "resText" >response...</p>
+<button name="send"  onclick="getHttp()"/>send</button>
+<p id="secResText">response</p>
+<button name="secure send"  onclick="getSecuredHttp()"/>send</button>
+</body>
+</html>
